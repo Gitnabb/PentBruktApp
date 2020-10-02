@@ -2,6 +2,9 @@ package no.ntnu.pentbrukt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,15 +16,18 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView textPublish;
-    private EditText editTextName;
+    private TextView textLogin;
+    private EditText email;
+    private EditText password;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonPublish:
+            case R.id.login_button:
                 Toast.makeText(this, "Annonse publisert!", Toast.LENGTH_SHORT).show();
-                textPublish.setText("Hello " + editTextName.getText().toString());
+                textLogin.setText("Hello " + email.getText().toString());
+                //textLogin.setTextColor(Color.WHITE);
                 break;
             default:
                 break;
@@ -34,11 +40,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnPublish = findViewById(R.id.buttonPublish);
-        btnPublish.setOnClickListener(this);
+        Button btnLogin = findViewById(R.id.login_button);
+        btnLogin.setOnClickListener(this);
 
-        editTextName = findViewById(R.id.editTextName);
-        textPublish = findViewById(R.id.textPublish);
+        email = findViewById(R.id.email);
+        email.setTextColor(Color.WHITE);
+
+        password = findViewById(R.id.password);
+        email.setTextColor(Color.WHITE);
 
     }
 

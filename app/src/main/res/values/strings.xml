@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PentBrukt</string>
+    <string name="passord">Passord</string>
+    <string name="email">Email</string>
+    <string name="login">Logg inn</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logg_inn">Logg inn</string>
+    <color name="bg">#5c5e5c</color>
 </resources>
