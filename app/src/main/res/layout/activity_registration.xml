@@ -7,46 +7,46 @@
     android:background="@color/bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="50dp"
+    android:padding ="25dp"
     tools:context=".MainActivity">
 
     <EditText
-    android:id="@+id/first_name"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:hint="@string/firstname"
-    android:textColor="@color/colorAccentWhite"
-    android:textColorHint="@color/colorAccentWhite"
-    android:textStyle="italic"
-    android:textSize="15sp"
-    android:fontFamily="sans-serif-condensed"/>
+        android:id="@+id/first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="@string/firstname"
+        android:textColor="@color/colorAccentWhite"
+        android:textColorHint="@color/colorAccentWhite"
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/last_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@id/first_name"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
         android:hint="@string/lastname"
         android:textColor="@color/colorAccentWhite"
         android:textColorHint="@color/colorAccentWhite"
-        android:textStyle="italic"
         android:textSize="15sp"
-        android:fontFamily="sans-serif-condensed"/>
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@id/last_name"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
         android:hint="@string/email"
         android:textColor="@color/colorAccentWhite"
         android:textColorHint="@color/colorAccentWhite"
-        android:textStyle="italic"
         android:textSize="15sp"
-        android:fontFamily="sans-serif-condensed"/>
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/password"
@@ -54,12 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/email"
         android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
         android:hint="@string/password"
         android:textColor="@color/colorAccentWhite"
         android:textColorHint="@color/colorAccentWhite"
-        android:textStyle="italic"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/repeat_password"
@@ -67,39 +67,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
         android:hint="@string/repeat_password"
         android:textColor="@color/colorAccentWhite"
         android:textColorHint="@color/colorAccentWhite"
-        android:textStyle="italic"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
     <CheckBox
         android:id="@+id/checkbox_agreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/repeat_password"
-        />
+        android:layout_below="@id/repeat_password" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/checkbox_agreement"
+        android:layout_below="@id/repeat_password"
         android:layout_margin="5dp"
-        android:text="@string/I_accept_terms"
-        android:layout_below="@id/repeat_password" />
+        android:layout_toEndOf="@id/checkbox_agreement"
+        android:text="@string/I_accept_terms" />
 
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/checkbox_agreement"
         android:layout_centerInParent="true"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/colorAccentWhite"
+        android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
-        android:text="@string/register_button" />
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/register_button"
+        android:textColor="@color/colorAccentWhite" />
 
     <TextView
         android:id="@+id/already_registered"
@@ -109,10 +109,13 @@
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/already_registered_login"
         android:textColor="@color/colorAccentWhite"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-condensed"/>
+        android:focusable="true"
+        android:onClick="onClick"
+        android:clickable="true"/>
 
     <ImageView
         android:id="@+id/imageView3"

@@ -21,16 +21,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText email, password;
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.login_button:
-                Toast.makeText(this, "Logget inn!", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.not_registered_newuser:
-                Intent launchRegisterActivity = new Intent(MainActivity.this, RegistrationActivity.class);
-                startActivity(launchRegisterActivity);
-        }
-    }
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.login_button:
+                    Toast.makeText(this, "Logget inn!", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.not_registered_newuser:
+                    Intent launchRegisterActivity = new Intent(MainActivity.this, RegistrationActivity.class);
+                    startActivity(launchRegisterActivity);
+            }
+}
 
     private void setupUIViews() {
 
