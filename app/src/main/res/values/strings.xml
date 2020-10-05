@@ -10,4 +10,5 @@
     <string name="firstname">Fornavn</string>
     <string name="lastname">Etternavn</string>
     <string name="repeat_password">Gjenta passord</string>
+    <string name="I_accept_terms">Jeg godkjenner Pentbrukt\'s vilkår</string>
 </resources>

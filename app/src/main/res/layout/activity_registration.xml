@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/checkbox_agreement"
         android:layout_margin="5dp"
-        android:text="Jeg godkjenner Pentbrukt's vilkår"
+        android:text="@string/I_accept_terms"
         android:layout_below="@id/repeat_password" />
 
 
