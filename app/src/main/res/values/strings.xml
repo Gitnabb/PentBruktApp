@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">PentBrukt</string>
-    <string name="passord">Passord</string>
+    <string name="password">Passord</string>
     <string name="email">Email</string>
     <string name="login">Logg inn</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
     <string name="logg_inn">Logg inn</string>
-    <color name="bg">#5c5e5c</color>
+    <string name="new_user">Ny bruker</string>
+    <string name="register_button">Registrér!</string>
+    <string name="already_registered_login">Allerede registrert? Logg inn!</string>
+    <string name="firstname">Fornavn</string>
+    <string name="lastname">Etternavn</string>
+    <string name="repeat_password">Gjenta passord</string>
 </resources>
