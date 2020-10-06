@@ -1,5 +1,6 @@
 package no.ntnu.pentbrukt.Client;
 
+import no.ntnu.pentbrukt.Interface.RestInterface;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -7,8 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    private static Retrofit retrofit = null;
-    private static String BASE_URL;
+    private static String BASE_URL = "http://10.22.190.173:8080/api";
+    private static RestClient restClientInstance;
+    private static Retrofit retrofit;
 
     static Retrofit getClient() {
 
@@ -17,7 +19,7 @@ public class RestClient {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        retrofit = new Retrofit.Builder().baseUrl("https://reqres.in")
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
@@ -25,5 +27,14 @@ public class RestClient {
         return retrofit;
     }
 
+    public static synchronized RestClient getInstance() {
+        if (restClientInstance == null) {
+            restClientInstance = new RestClient();
+        }
+        return restClientInstance;
+    }
 
+    public RestInterface getRestInterface() {
+        return retrofit.create(RestInterface.class);
+    }
 }

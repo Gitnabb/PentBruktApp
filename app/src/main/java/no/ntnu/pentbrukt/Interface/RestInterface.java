@@ -1,6 +1,6 @@
-/*
 package no.ntnu.pentbrukt.Interface;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -9,21 +9,15 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-interface RestInterface {
-
-    @GET("/api/unknown")
-    Call<MultipleResource> doGetListResources();
-
-    @POST("/api/users")
-    Call<User> createUser(@Body User user);
-
-    @GET("/api/users?")
-    Call<UserList> doGetUserList(@Query("page") String page);
+public interface RestInterface {
 
     @FormUrlEncoded
-    @POST("/api/users?")
-    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);
-}
+    @POST("new-user")
+    Call<ResponseBody> registerUser(
+            @Field("firstname") String firstname,
+            @Field("lastname") String lastname,
+            @Field("username") String username,
+            @Field("password") String password
+    );
 
 }
-*/

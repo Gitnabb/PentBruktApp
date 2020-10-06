@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new MessagesFragment()).commit();
                 break;
 
+            case R.id.nav_register_new:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new RegistrationFragment()).commit();
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
 
 
 }
