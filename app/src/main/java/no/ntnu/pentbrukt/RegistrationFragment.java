@@ -39,15 +39,17 @@ public class RegistrationFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
-        initViews();
+        initViews(view);
 
-        Button registerButton = (Button) view.findViewById(R.id.register_button);
+        Button registerButton = view.findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.register_button:
+                        System.out.println("Register button pressed!");
                         registerUser();
+                        System.out.println("Register user function went through");
                         break;
 
                     case R.id.already_registered:
@@ -60,17 +62,20 @@ public class RegistrationFragment extends Fragment {
         return view;
     }
 
-    public void initViews() {
+    public void initViews(View view) {
 
-        editTextFirstName = getActivity().findViewById(R.id.first_name);
-        editTextLastName = getActivity().findViewById(R.id.last_name);
-        editTextEmail = getActivity().findViewById(R.id.email);
-        editTextPassword = getActivity().findViewById(R.id.password);
-        editTextRepeatPassword = getActivity().findViewById(R.id.repeat_password);
+        editTextFirstName = view.findViewById(R.id.first_name);
+        editTextLastName = view.findViewById(R.id.last_name);
+        editTextEmail = view.findViewById(R.id.email);
+        editTextPassword = view.findViewById(R.id.password);
+        editTextRepeatPassword = view.findViewById(R.id.repeat_password);
 
     }
 
     private void registerUser() {
+        System.out.println("Get in heeeee");
+        System.out.println(editTextFirstName.getText().toString());
+
         String firstname = editTextFirstName.getText().toString().trim();
         String lastName = editTextLastName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
