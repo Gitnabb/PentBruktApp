@@ -8,38 +8,12 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding ="25dp"
-    tools:context=".RegistrationFragment">
-
-    <EditText
-        android:id="@+id/first_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/firstname"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <EditText
-        android:id="@+id/last_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/first_name"
-        android:layout_centerInParent="true"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/lastname"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
-        android:textSize="15sp"
-        android:textStyle="italic" />
+    tools:context=".LoginFragment">
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/last_name"
         android:layout_centerInParent="true"
         android:fontFamily="sans-serif-condensed"
         android:hint="@string/email"
@@ -62,57 +36,30 @@
         android:textSize="15sp"
         android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/repeat_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
-        android:layout_centerInParent="true"
-        android:fontFamily="sans-serif-condensed"
-        android:inputType="textPassword"
-        android:hint="@string/repeat_password"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <CheckBox
-        android:id="@+id/checkbox_agreement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/repeat_password" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/repeat_password"
-        android:layout_margin="5dp"
-        android:layout_toEndOf="@id/checkbox_agreement"
-        android:text="@string/I_accept_terms" />
-
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/checkbox_agreement"
+        android:layout_below="@+id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/register_button"
+        android:text="@string/logg_inn"
         android:textColor="@color/colorAccentWhite" />
 
     <TextView
-        android:id="@+id/already_registered"
+        android:id="@+id/not_registered"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_below="@+id/register_button"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/login_button"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/already_registered_login"
+        android:text="@string/not_registered"
         android:textColor="@color/colorAccentWhite"
         android:textSize="20sp"
         android:focusable="true"

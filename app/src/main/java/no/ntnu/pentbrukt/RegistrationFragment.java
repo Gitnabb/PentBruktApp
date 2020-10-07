@@ -1,11 +1,13 @@
 package no.ntnu.pentbrukt;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +35,7 @@ public class RegistrationFragment extends Fragment {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextRepeatPassword;
-
+    private CheckBox checkBoxLicenseAgreement;
 
     @Nullable
     @Override
@@ -49,7 +51,6 @@ public class RegistrationFragment extends Fragment {
                     case R.id.register_button:
                         System.out.println("Register button pressed!");
                         registerUser();
-                        System.out.println("Register user function went through");
                         break;
 
                     case R.id.already_registered:
@@ -69,18 +70,28 @@ public class RegistrationFragment extends Fragment {
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);
         editTextRepeatPassword = view.findViewById(R.id.repeat_password);
+        checkBoxLicenseAgreement = view.findViewById(R.id.checkbox_agreement);
+
 
     }
 
     private void registerUser() {
-        System.out.println("Get in heeeee");
-        System.out.println(editTextFirstName.getText().toString());
+
 
         String firstname = editTextFirstName.getText().toString().trim();
         String lastName = editTextLastName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String repeatPassword = editTextRepeatPassword.getText().toString().trim();
+        boolean boxChecked = checkBoxLicenseAgreement.isChecked();
+
+        // DEBUG: Fields catches values!
+        System.out.println(editTextFirstName.getText().toString());
+        System.out.println(editTextLastName.getText().toString());
+        System.out.println(editTextEmail.getText().toString());
+        System.out.println(editTextPassword.getText().toString());
+        System.out.println(editTextRepeatPassword.getText().toString());
+        System.out.println("License agreement accepted" + boxChecked);
 
         if (firstname.isEmpty()) {
             editTextFirstName.setError("Vennligst skriv inn fornavn");
@@ -122,6 +133,12 @@ public class RegistrationFragment extends Fragment {
             return;
         }
 
+        if (!boxChecked) {
+            checkBoxLicenseAgreement.setError("Du må akseptere våre vilkår for å fortsette!");
+            checkBoxLicenseAgreement.requestFocus();
+            return;
+        }
+
         // Post request to API
         Call<ResponseBody> call = RestClient
                 .getInstance()
@@ -132,9 +149,13 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
+                Activity activity = getActivity();
                 try {
-                    String s = response.body().string();
-                    Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                    if (response.body() != null) {
+                        String s = response.body().string();
+                        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

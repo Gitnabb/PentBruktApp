@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ListingsFragment()).commit();
         }
@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new RegistrationFragment()).commit();
                 break;
 
+            case R.id.nav_login:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new LoginFragment()).commit();
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -85,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-
 
 
 }

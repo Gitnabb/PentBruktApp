@@ -8,11 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    private static String BASE_URL = "http://10.22.190.173:8080/api";
+    private static String BASE_URL = "http://10.22.190.173:8080/api/";
     private static RestClient restClientInstance;
     private static Retrofit retrofit;
 
-    static Retrofit getClient() {
+    public RestClient() {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -24,7 +24,6 @@ public class RestClient {
                 .client(client)
                 .build();
 
-        return retrofit;
     }
 
     public static synchronized RestClient getInstance() {

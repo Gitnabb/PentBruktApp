@@ -13,7 +13,7 @@ public interface RestInterface {
 
     @FormUrlEncoded
     @POST("new-user")
-    Call<ResponseBody> registerUser(
+    public Call<ResponseBody> registerUser(
             @Field("firstname") String firstname,
             @Field("lastname") String lastname,
             @Field("username") String username,
