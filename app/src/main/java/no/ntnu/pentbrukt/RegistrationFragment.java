@@ -21,6 +21,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 import no.ntnu.pentbrukt.Client.RestClient;
+import no.ntnu.pentbrukt.Interface.RestInterface;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -143,7 +144,7 @@ public class RegistrationFragment extends Fragment {
         Call<ResponseBody> call = RestClient
                 .getInstance()
                 .getRestInterface()
-                .registerUser(firstname, lastName, email, password);
+                .registerUser(new RestInterface.User(firstname, lastName, email, password));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

@@ -10,7 +10,7 @@ public class RestClient {
 
     private static String BASE_URL = "http://10.22.190.173:8080/api/";
     private static RestClient restClientInstance;
-    private static Retrofit retrofit;
+    Retrofit retrofit;
 
     public RestClient() {
 
@@ -19,7 +19,8 @@ public class RestClient {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
