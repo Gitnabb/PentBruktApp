@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.w3c.dom.Text;
 
@@ -150,15 +151,13 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
+                String successMessage = "Bruker registrert!";
                 Activity activity = getActivity();
-                try {
-                    if (response.body() != null) {
-                        String s = response.body().string();
-                        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+                Fragment fragment = new LoginFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                if (response.body() != null) {
+                    Toast.makeText(activity, successMessage, Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
                 }
 
             }
