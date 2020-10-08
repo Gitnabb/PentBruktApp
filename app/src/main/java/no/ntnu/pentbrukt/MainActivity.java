@@ -7,14 +7,22 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Menu navMenu;
+    private NavigationView navigationView;
     private DrawerLayout drawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +33,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navMenu = navigationView.getMenu();
 
+        setMenuSelections();
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -75,6 +85,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new LoginFragment()).commit();
                 break;
 
+            case R.id.nav_logout:
+                UserPrefData userPrefData = new UserPrefData(getApplicationContext());
+                userPrefData.setToken("");
+                setMenuSelections();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new LoginFragment()).commit();
+                Toast.makeText(getApplicationContext(), "Logget ut!", Toast.LENGTH_SHORT).show();
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -91,5 +110,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
+    public void setMenuSelections() {
+
+        UserPrefData userPrefData = new UserPrefData(getApplicationContext());
+        System.out.println(userPrefData.getToken());
+        if (userPrefData.getToken().isEmpty()) {
+
+            // USER IS LOGGED OUT: THERE IS NO TOKEN
+            navMenu.findItem(R.id.nav_profile).setVisible(true);
+            navMenu.findItem(R.id.nav_settings).setVisible(true);
+            navMenu.findItem(R.id.nav_message).setVisible(true);
+            navMenu.findItem(R.id.nav_help).setVisible(true);
+            navMenu.findItem(R.id.nav_new_listing).setVisible(true);
+            navMenu.findItem(R.id.nav_register_new).setVisible(true);
+            navMenu.findItem(R.id.nav_login).setVisible(true);
+
+            navMenu.findItem(R.id.nav_logout).setVisible(false);
+
+            // USER IS LOGGED IN: TOKEN IS PRESENT
+        } else {
+            navMenu.findItem(R.id.nav_register_new).setVisible(false);
+            navMenu.findItem(R.id.nav_login).setVisible(false);
+            navMenu.findItem(R.id.nav_logout).setVisible(true);
+        }
+
+    }
 
 }

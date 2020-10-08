@@ -2,6 +2,7 @@ package no.ntnu.pentbrukt;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -78,8 +81,6 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void registerUser() {
-
-
         String firstname = editTextFirstName.getText().toString().trim();
         String lastName = editTextLastName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
@@ -87,7 +88,7 @@ public class RegistrationFragment extends Fragment {
         String repeatPassword = editTextRepeatPassword.getText().toString().trim();
         boolean boxChecked = checkBoxLicenseAgreement.isChecked();
 
-        // DEBUG: Fields catches values!
+        // DEBUG TODO: DELETE THIS FOR GODS SAKE
         System.out.println(editTextFirstName.getText().toString());
         System.out.println(editTextLastName.getText().toString());
         System.out.println(editTextEmail.getText().toString());
@@ -145,19 +146,36 @@ public class RegistrationFragment extends Fragment {
         Call<ResponseBody> call = RestClient
                 .getInstance()
                 .getRestInterface()
-                .registerUser(new RestInterface.User(firstname, lastName, email, password));
+                .registerUser(new User(firstname, lastName, email, password));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                String successMessage = "Bruker registrert!";
-                Activity activity = getActivity();
-                Fragment fragment = new LoginFragment();
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                if (response.body() != null) {
-                    Toast.makeText(activity, successMessage, Toast.LENGTH_SHORT).show();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+                if (response.isSuccessful()) {
+
+                    String successMessage = "Bruker registrert!";
+                    Activity activity = getActivity();
+                    Fragment fragment = new LoginFragment();
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                    if (response.body() != null) {
+                        Toast.makeText(activity, successMessage, Toast.LENGTH_SHORT).show();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+                    }
+                } else if (response.code() == 400) {
+
+                    String errorMessage = "";
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        errorMessage = jsonObject.getString("errormessage");
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Somethings up! Error boy", Toast.LENGTH_SHORT).show();
+                    System.out.println("Somethings up! Error boy");
                 }
 
             }
