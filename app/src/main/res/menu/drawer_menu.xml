@@ -5,10 +5,16 @@
 
     <group android:checkableBehavior="single">
 
+
+
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
             android:title="Din bruker" />
+        <item
+            android:id="@+id/nav_listings"
+            android:icon="@drawable/ic_listings"
+            android:title="Annonser" />
 
         <item
             android:id="@+id/nav_new_listing"
@@ -22,7 +28,7 @@
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="">
 
         <menu>
 
