@@ -5,8 +5,6 @@
 
     <group android:checkableBehavior="single">
 
-
-
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
@@ -38,9 +36,9 @@
                 android:title="Innstillinger" />
 
             <item
-            android:id="@+id/nav_help"
-            android:icon="@drawable/ic_help"
-            android:title="Hjelp" />
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="Hjelp" />
 
             <item
                 android:id="@+id/nav_register_new"

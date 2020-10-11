@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ListingsFragment()).commit();
+            //Intent i = new Intent(this, ListingActivity.class);
+            //startActivity(i);
+            return;
         }
 
     }
@@ -67,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_listings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ListingsFragment()).commit();
+                    new ListingsFragment()).commit();
+                /*Intent i = new Intent(this, ListingActivity.class);
+                startActivity(i); */
 
             case R.id.nav_new_listing:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

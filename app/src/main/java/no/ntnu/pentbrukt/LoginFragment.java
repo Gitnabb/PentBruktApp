@@ -1,6 +1,7 @@
 package no.ntnu.pentbrukt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -115,6 +116,7 @@ public class LoginFragment extends Fragment {
                 System.out.println("onResponse called!");
                 Activity activity = getActivity();
                 Fragment fragment = new ListingsFragment();
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 if (response.isSuccessful()) {
 
@@ -129,7 +131,11 @@ public class LoginFragment extends Fragment {
                         System.out.println("TOKEN FROM SERVER: " + token);
                         System.out.println("IS TOKEN SAVED TO PREFDATA??: " + userPrefData.getToken());
                         Toast.makeText(activity, "Logget inn!", Toast.LENGTH_SHORT).show();
+
                         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+
+                        /*Intent i = new Intent(getContext(), ListingActivity.class);
+                        startActivity(i);*/
                     }
                 } else if (response.code() == 403) {
                     String errorMessage = "Brukernavn eller passord er feil!";
