@@ -6,4 +6,6 @@
     <color name="colorAccentWhite">#ffffff</color>
     <color name="bg">#6CA2C5</color>
     <color name="nav_color">#96D6FF</color>
+    <color name="light_gray">#D8D9DA</color>
+    <color name="text_box">#FBFBFB</color>
 </resources>

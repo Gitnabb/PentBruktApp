@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".ListingsFragment">
             <intent-filter>
-                <action android:name="no.ntnu.pentbrukt.listingsactivity" />
+                <action android:name="no.ntnu.pentbrukt.listingsFrament" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

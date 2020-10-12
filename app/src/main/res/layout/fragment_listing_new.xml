@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:padding ="10dp"
+    tools:context=".ListingsFragment">
 
-    <TextView
+    <ImageButton
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/light_gray"
+        android:src="@drawable/ic_add_photo"/>
+
+    <EditText
+        android:id="@+id/listing_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="Tittel"
+        android:background="@color/text_box"
+        android:textColor="@color/colorAccentWhite"
+        android:textColorHint="@color/colorAccentWhite"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <EditText
+        android:id="@+id/listing_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listing_title"
+        android:layout_centerVertical="true"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="@string/Beskrivelse"
+        android:textColor="@color/colorAccentWhite"
+        android:textColorHint="@color/colorAccentWhite"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:inputType="textMultiLine"/>
+
+    <EditText
+        android:id="@+id/listing_price"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listing_title"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="Kroner"
+        android:textColor="@color/colorAccentWhite"
+        android:textColorHint="@color/colorAccentWhite"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <Button
+        android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New listing fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/listing_price"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="sans-serif-medium"
+        android:text="Publisér annonse"
+        android:textColor="@color/colorAccentWhite" />
+
+
+
+
+
+    <!--<TextView
+        android:id="@+id/textPublish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonPublish"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Heil!"
+        android:textSize="20dp" />-->
+
 
 </RelativeLayout>

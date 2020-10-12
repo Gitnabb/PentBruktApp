@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -53,6 +56,11 @@ public class ListingsRecViewAdapter extends RecyclerView.Adapter<ListingsRecView
             }
         });
 
+        Glide.with(context)
+                .asBitmap()
+                .load(listings.get(position).getImageUrl())
+                .into(holder.listingImage);
+
     }
 
     @Override
@@ -68,12 +76,15 @@ public class ListingsRecViewAdapter extends RecyclerView.Adapter<ListingsRecView
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtListingTitle, txtListingPrice;
         private CardView parent;
+        private ImageView listingImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtListingTitle = itemView.findViewById(R.id.txtListingTitle);
             txtListingPrice = itemView.findViewById(R.id.txtListingPrice);
             parent = itemView.findViewById(R.id.parent);
+
+            listingImage = itemView.findViewById(R.id.listingImage);
 
         }
     }
