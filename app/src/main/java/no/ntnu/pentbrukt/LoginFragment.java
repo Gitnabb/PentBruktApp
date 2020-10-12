@@ -26,9 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginFragment extends Fragment {
-
-    public TextView not_registered;
+public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -41,31 +39,36 @@ public class LoginFragment extends Fragment {
         initViews(view);
 
         Button loginButton = view.findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.login_button:
-                        System.out.println("Login button pressed!");
-                        loginUser();
-                        System.out.println("Login went out!");
-                        break;
+        TextView notRegistered = view.findViewById(R.id.not_registered);
 
-                    case R.id.not_registered:
-                        System.out.println("not registered button pressed");
-                        break;
-                }
-            }
-        });
-
+        loginButton.setOnClickListener(this);
+        notRegistered.setOnClickListener(this);
 
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.login_button:
+                loginUser();
+                break;
+
+            case R.id.not_registered:
+                Fragment fragment = new RegistrationFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+                break;
+
+        }
+    }
+
 
     public void initViews(View view) {
 
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);
+
 
     }
 
@@ -154,5 +157,6 @@ public class LoginFragment extends Fragment {
         });
 
     }
+
 
 }

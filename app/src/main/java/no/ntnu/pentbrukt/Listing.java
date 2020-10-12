@@ -1,8 +1,11 @@
 package no.ntnu.pentbrukt;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Listing {
 
     private String listingTitle;
+    @SerializedName("body")
     private String listingDesc;
     private int listingPrice;
     private String listingSeller;

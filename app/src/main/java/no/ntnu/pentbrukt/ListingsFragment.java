@@ -1,12 +1,12 @@
 
 package no.ntnu.pentbrukt;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +15,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import no.ntnu.pentbrukt.Client.RestClient;
+import no.ntnu.pentbrukt.Interface.RestInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListingsFragment extends Fragment {
 
@@ -37,7 +44,20 @@ public class ListingsFragment extends Fragment {
                 "Hjalmar Gunnarsen", "idag", kidsbike));
         listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
                 "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
+        listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
+                "Hjalmar Gunnarsen", "idag", kidsbike));
 
+        
 
         adapter = new ListingsRecViewAdapter(view.getContext());
         adapter.setListings(listings);

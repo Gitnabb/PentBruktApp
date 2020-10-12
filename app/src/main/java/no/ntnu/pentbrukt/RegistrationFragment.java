@@ -2,7 +2,6 @@ package no.ntnu.pentbrukt;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +19,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
 import no.ntnu.pentbrukt.Client.RestClient;
-import no.ntnu.pentbrukt.Interface.RestInterface;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

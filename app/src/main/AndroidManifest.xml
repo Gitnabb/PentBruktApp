@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:windowSoftInputMode="adjustPan"
         android:theme="@style/AppTheme">
-        <activity android:name=".stash.ListingActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
