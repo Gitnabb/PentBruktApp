@@ -4,8 +4,10 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#42a1f5</color>
     <color name="colorAccentWhite">#ffffff</color>
-    <color name="bg">#6CA2C5</color>
+    <color name="bg">#F3F3F3</color>
     <color name="nav_color">#96D6FF</color>
+    <color name="main_dark">#454545</color>
+    <color name="main_dark_text">#222222</color>
     <color name="light_gray">#D8D9DA</color>
     <color name="text_box">#FBFBFB</color>
 </resources>

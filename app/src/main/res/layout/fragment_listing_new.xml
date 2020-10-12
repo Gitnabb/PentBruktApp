@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
-    android:padding ="10dp"
+    android:padding="20dp"
     tools:context=".ListingsFragment">
 
     <ImageButton
-        android:id="@+id/imageView3"
+        android:id="@+id/add_images_button"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/light_gray"
-        android:src="@drawable/ic_add_photo"/>
+        android:src="@drawable/ic_add_photo" />
 
     <EditText
         android:id="@+id/listing_title"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/add_images_button"
         android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/text_box"
         android:fontFamily="sans-serif-condensed"
         android:hint="Tittel"
-        android:background="@color/text_box"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
         android:textSize="15sp"
         android:textStyle="italic" />
 
@@ -34,26 +34,31 @@
         android:id="@+id/listing_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:isScrollContainer="true"
+        android:scrollbars="vertical"
+        android:minLines="6"
+        android:maxLines="10"
         android:layout_below="@id/listing_title"
         android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_box"
         android:fontFamily="sans-serif-condensed"
-        android:hint="@string/Beskrivelse"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
+        android:hint="Beskrivelse"
+        android:inputType="textMultiLine"
+        android:gravity="top|left"
+        android:textColor="@color/main_dark_text"
         android:textSize="15sp"
-        android:textStyle="italic"
-        android:inputType="textMultiLine"/>
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/listing_price"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/listing_title"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/listing_description"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_box"
         android:fontFamily="sans-serif-condensed"
         android:hint="Kroner"
-        android:textColor="@color/colorAccentWhite"
-        android:textColorHint="@color/colorAccentWhite"
         android:textSize="15sp"
         android:textStyle="italic" />
 
@@ -64,14 +69,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/listing_price"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:background="@color/colorAccent"
         android:fontFamily="sans-serif-medium"
         android:text="Publisér annonse"
         android:textColor="@color/colorAccentWhite" />
-
-
-
 
 
     <!--<TextView
