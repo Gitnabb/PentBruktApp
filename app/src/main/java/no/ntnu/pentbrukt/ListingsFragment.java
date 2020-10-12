@@ -1,6 +1,7 @@
 
 package no.ntnu.pentbrukt;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,15 +39,14 @@ public class ListingsFragment extends Fragment {
                 "Hjalmar Gunnarsen", "idag", kidsbike));
 
 
-        adapter = new ListingsRecViewAdapter();
+        adapter = new ListingsRecViewAdapter(view.getContext());
         adapter.setListings(listings);
 
         listingsRecView.setAdapter(adapter);
-        listingsRecView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        listingsRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         return view;
     }
-
 
 
     private String kidsbike = "https://www.jollyroom.no/storage/ma/b980f0dc5dad471bb41992711ae6c123/" +

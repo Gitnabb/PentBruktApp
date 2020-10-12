@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new ListingsFragment()).commit();
                 /*Intent i = new Intent(this, ListingActivity.class);
                 startActivity(i); */
+                break;
 
             case R.id.nav_new_listing:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

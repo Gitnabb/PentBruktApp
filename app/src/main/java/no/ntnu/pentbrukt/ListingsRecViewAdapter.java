@@ -1,11 +1,15 @@
 package no.ntnu.pentbrukt;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,9 +18,11 @@ public class ListingsRecViewAdapter extends RecyclerView.Adapter<ListingsRecView
 
 
     private ArrayList<Listing> listings = new ArrayList<>();
+    private Context context;
 
-    public ListingsRecViewAdapter() {
+    public ListingsRecViewAdapter(Context context) {
 
+        this.context = context;
 
 
     }
@@ -36,11 +42,16 @@ public class ListingsRecViewAdapter extends RecyclerView.Adapter<ListingsRecView
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-
-        holder.txtListingName.setText(listings.get(position).getListingTitle());
-
+        holder.txtListingTitle.setText(listings.get(position).getListingTitle());
+        holder.txtListingPrice.setText("Pris: " + String.valueOf(listings.get(position).getListingPrice()));
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, listings.get(position).getListingTitle() + "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -55,12 +66,14 @@ public class ListingsRecViewAdapter extends RecyclerView.Adapter<ListingsRecView
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtListingName;
+        private TextView txtListingTitle, txtListingPrice;
+        private CardView parent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            txtListingName = itemView.findViewById(R.id.txtListingName);
+            txtListingTitle = itemView.findViewById(R.id.txtListingTitle);
+            txtListingPrice = itemView.findViewById(R.id.txtListingPrice);
+            parent = itemView.findViewById(R.id.parent);
 
         }
     }
