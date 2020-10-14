@@ -1,5 +1,8 @@
 package no.ntnu.pentbrukt.Interface;
 
+import java.util.List;
+
+import no.ntnu.pentbrukt.Listing;
 import no.ntnu.pentbrukt.LoginRequest;
 import no.ntnu.pentbrukt.LoginResponse;
 import no.ntnu.pentbrukt.User;
@@ -23,7 +26,7 @@ public interface RestInterface {
     Call<ResponseBody> loginUser(@Body LoginRequest loginRequest);
 
     @GET("api/listings/get-all-listings")
-    Call<ResponseBody> getAllListings();
+    Call<List<Listing>> getAllListings();
 
 }
 

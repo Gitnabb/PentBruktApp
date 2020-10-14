@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import no.ntnu.pentbrukt.Client.RestClient;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListingsFragment extends Fragment {
 
@@ -22,6 +30,8 @@ public class ListingsFragment extends Fragment {
     private RelativeLayout relativeLayout;
     ArrayList<Listing> listings = new ArrayList<>();
     private ListingsRecViewAdapter adapter;
+
+    ArrayList<Listing> listingsFromDB;
 
     @Nullable
     @Override
@@ -44,6 +54,29 @@ public class ListingsFragment extends Fragment {
 
         listingsRecView.setAdapter(adapter);
         listingsRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        // API CALL
+        Call<List<Listing>> call = RestClient
+                .getInstance()
+                .getRestInterface()
+                .getAllListings();
+
+        call.enqueue(new Callback<List<Listing>>() {
+            @Override
+            public void onResponse(Call<List<Listing>> call, Response<List<Listing>> response) {
+                //System.out.println(response.body());
+                listingsFromDB = new ArrayList<>(response.body());
+                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Listing>> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
         return view;
     }

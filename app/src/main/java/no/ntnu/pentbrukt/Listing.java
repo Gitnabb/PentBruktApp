@@ -1,13 +1,40 @@
 package no.ntnu.pentbrukt;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Listing {
 
+    @SerializedName("listingid")
+    @Expose
+    private long listingid;
+
+    @SerializedName("listingTitle")
+    @Expose
     private String listingTitle;
+
+    @SerializedName("listingDesc")
+    @Expose
     private String listingDesc;
+
+    @SerializedName("listingPrice")
+    @Expose
     private int listingPrice;
+
+    @SerializedName("listingSeller")
+    @Expose
     private String listingSeller;
+
+    @SerializedName("listingPublished")
+    @Expose
     private String listingPublished;
 
+    @SerializedName("listingSold")
+    @Expose
+    private Boolean listingSold;
+
+    @SerializedName("imageUrl")
+    @Expose
     private String imageUrl;
 
     public Listing(String listingTitle, String listingDesc,
@@ -25,13 +52,23 @@ public class Listing {
     @Override
     public String toString() {
         return "Listing{" +
-                "listingTitle='" + listingTitle + '\'' +
+                "listingid=" + listingid +
+                ", listingTitle='" + listingTitle + '\'' +
                 ", listingDesc='" + listingDesc + '\'' +
                 ", listingPrice=" + listingPrice +
                 ", listingSeller='" + listingSeller + '\'' +
                 ", listingPublished='" + listingPublished + '\'' +
+                ", listingSold=" + listingSold +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
+    }
+
+    public long getListingid() {
+        return listingid;
+    }
+
+    public void setListingid(long listingid) {
+        this.listingid = listingid;
     }
 
     public String getListingTitle() {
@@ -72,6 +109,14 @@ public class Listing {
 
     public void setListingPublished(String listingPublished) {
         this.listingPublished = listingPublished;
+    }
+
+    public Boolean getListingSold() {
+        return listingSold;
+    }
+
+    public void setListingSold(Boolean listingSold) {
+        this.listingSold = listingSold;
     }
 
     public String getImageUrl() {
