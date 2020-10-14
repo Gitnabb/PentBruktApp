@@ -28,18 +28,19 @@ public class ListingsFragment extends Fragment {
 
     private RecyclerView listingsRecView;
     private RelativeLayout relativeLayout;
-    ArrayList<Listing> listings = new ArrayList<>();
-    private ListingsRecViewAdapter adapter;
+    //ArrayList<Listing> listings = new ArrayList<>();
 
-    ArrayList<Listing> listingsFromDB;
+    ArrayList<Listing> listingsFromDB = new ArrayList<>();
+    private ListingsRecViewAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragments_listings, container, false);
+        final View view = inflater.inflate(R.layout.fragments_listings, container, false);
 
         listingsRecView = view.findViewById(R.id.listingsRecView);
 
+/*
         // TEST LISTINGS LIST :)
         listings.add(new Listing("Sykkel", "Bra sykkel.", 2500,
                 "Hjalmar Gunnarsen", "idag", kidsbike));
@@ -47,13 +48,9 @@ public class ListingsFragment extends Fragment {
                 "Hjalmar Gunnarsen", "idag", kidsbike));
         listings.add(new Listing("Sykkel3", "Bra sykkel.", 2700,
                 "Hjalmar Gunnarsen", "idag", kidsbike));
+*/
 
 
-        adapter = new ListingsRecViewAdapter(view.getContext());
-        adapter.setListings(listings);
-
-        listingsRecView.setAdapter(adapter);
-        listingsRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         // API CALL
         Call<List<Listing>> call = RestClient
@@ -65,7 +62,12 @@ public class ListingsFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Listing>> call, Response<List<Listing>> response) {
                 //System.out.println(response.body());
+                assert response.body() != null;
                 listingsFromDB = new ArrayList<>(response.body());
+                adapter = new ListingsRecViewAdapter(view.getContext(), listingsFromDB);
+                adapter.setListings(listingsFromDB);
+                listingsRecView.setAdapter(adapter);
+                listingsRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
                 Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
             }
 

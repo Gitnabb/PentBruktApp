@@ -4,10 +4,10 @@
     android:id="@+id/parent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:padding="10dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="20dp"
-    android:layout_margin="10dp">
+    app:cardElevation="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/pentbruk3"/>
+            android:src="@drawable/pentbruk3" />
 
         <TextView
             android:id="@+id/txtListingTitle"
@@ -40,6 +40,15 @@
             android:padding="10dp"
             android:text="Listing Price"
             android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/txtListingDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtListingPrice"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            android:text="Description" />
 
 
     </RelativeLayout>
